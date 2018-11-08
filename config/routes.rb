@@ -4,7 +4,24 @@ Rails.application.routes.draw do
 
   resources :products, only: [:index, :show]
   resources :categories, only: [:show]
-  resources :users, except: [:index, :edit, :update]
+
+  # resources :users, except: [:index, :edit, :update]
+  # resources :sessions, only: [:new, :create, :destroy]
+  # log in page with form:
+  get '/register'     => 'users#new'
+
+  # create (post) action for when log in form is submitted:
+  post '/register'    => 'users#create'
+
+  # resources :sessions, only: [:new, :create, :destroy]
+  # log in page with form:
+  get '/login'     => 'sessions#new'
+
+  # create (post) action for when log in form is submitted:
+  post '/login'    => 'sessions#create'
+
+  # delete action to log out:
+  delete '/logout' => 'sessions#destroy'
 
   resource :cart, only: [:show] do
     post   :add_item

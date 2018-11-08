@@ -8,10 +8,11 @@ class UsersController < ApplicationController
     @user.email.downcase!
 
     if @user.save
+      session[:user_id] = user.id
       flash[:notice] = "Account created successfully!"
       redirect_to root_path
     else
-      flash[:notice] = "Account coulr not be created! - " + @user.save.errors.messages
+      flash[:notice] = "Account could not be created! - " + @user.save.errors.messages
     end
   end
 
@@ -27,10 +28,11 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(
-      :name,
+      :first_name,
       :last_name,
       :email,
       :password,
+      :password_confirmation
     )
   end
 
