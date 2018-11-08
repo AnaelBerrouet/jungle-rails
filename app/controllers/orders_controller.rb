@@ -9,6 +9,8 @@ class OrdersController < ApplicationController
       Product.where("id = ?", item[:product_id])[0]
     }
 
+    @email = User.find(session[:user_id]).email
+
   end
 
   def create
