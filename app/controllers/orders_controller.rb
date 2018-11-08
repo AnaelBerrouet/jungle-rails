@@ -2,6 +2,15 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
+
+    @line_items = @order.line_items
+
+    @products = @line_items.map { |item|
+      Product.where("id = ?", item[:product_id])[0]
+    }
+
+    @email = User.find(session[:user_id]).email
+
   end
 
   def create
