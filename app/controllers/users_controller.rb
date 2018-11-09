@@ -10,6 +10,8 @@ class UsersController < ApplicationController
     if @user.save
       session[:user_id] = user.id
       flash[:notice] = "Account created successfully!"
+
+      UserMailer.welcome_email(@user).deliver_later
       redirect_to root_path
     else
       flash[:notice] = "Account could not be created! - " + @user.save.errors.messages

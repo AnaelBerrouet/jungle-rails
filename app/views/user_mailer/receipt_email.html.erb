@@ -1,0 +1,14 @@
+<div>
+  <p>Jungle Order Receipt</p>
+
+  <% @order.line_items.each do |item| %>
+    <p>Item: <%= item.product.name %></p>
+    <p>Description: <%= item.product.description %></p>
+    <p>Item Cost: <%= item.product.price %></p>
+    <p>Total Item Cost: <%= item.total_price_cents * 0.01 %></p>
+    <hr>
+  <% end %>
+
+  <p>Total: <%= @order.total_cents * 0.01 %></p>
+
+</div>

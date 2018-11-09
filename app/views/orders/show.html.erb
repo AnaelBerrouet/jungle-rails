@@ -16,8 +16,7 @@
         </tr>
       </thead>
       <tbody>
-
-        <% for i in 1...@products.length %>
+        <% for i in 0...@products.length %>
           <%= render 'item', product: @products[i], item: @line_items[i] %>
         <% end %>
 
