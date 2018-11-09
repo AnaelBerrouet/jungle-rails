@@ -132,5 +132,16 @@ cat3.products.create!({
   price: 2_483.75
 })
 
+## USERS
+
+user1 = User.new(first_name: "Bob", last_name: "Last1", email: "a@b.com", password: "password1")
+user2 = User.new(first_name: "Clarice", last_name: "Last1", email: "b@b.com", password: "password1")
+user3 = User.new(first_name: "Eugene", last_name: "Last1", email: "c@b.com", password: "password1")
+
+## REVIEWS
+review1 = Review.create!(product: cat1.products[0], user: user1, description: "This was pretty good!", rating: 5)
+review2 = Review.create!(product: cat1.products[1], user: user2, description: "Nooooooot so great..", rating: 1)
+review3 = Review.create!(product: cat2.products[0], user: user3, description: "Worked as intended!", rating: 3)
+review4 = Review.create!(product: cat2.products[0], user: user1, description: "Made me squeel with delight!", rating: 5)
 
 puts "DONE!"
