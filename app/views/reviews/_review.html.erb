@@ -1,0 +1,25 @@
+<div>
+
+  <header>
+    <h4>
+      <%= review.user.first_name %>
+    </h4>
+  </header>
+
+  <section>
+    <div>
+      <span>Rating: </span> <%= review.rating %>
+    </div>
+    <div>
+      <span>Description: </span>
+      <%= review.description %>
+    </div>
+
+    <% if user==review.user %>
+      <%= link_to "Delete comment", product_review_path(@product, review), confirm: "Are you sure?", method: :delete, class: 'btn btn-primary' %>
+    <% end %>
+  </section>
+
+
+
+</div>

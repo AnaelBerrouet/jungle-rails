@@ -134,11 +134,20 @@ cat3.products.create!({
 
 ## USERS
 
-user1 = User.new(first_name: "Bob", last_name: "Last1", email: "a@b.com", password: "password1")
-user2 = User.new(first_name: "Clarice", last_name: "Last1", email: "b@b.com", password: "password1")
-user3 = User.new(first_name: "Eugene", last_name: "Last1", email: "c@b.com", password: "password1")
+puts "Re-creating Users ..."
+
+User.destroy_all
+
+user1 = User.create!(first_name: "Bob", last_name: "Last1", email: "a@b.com", password: "password1")
+user2 = User.create!(first_name: "Clarice", last_name: "Last1", email: "b@b.com", password: "password1")
+user3 = User.create!(first_name: "Eugene", last_name: "Last1", email: "c@b.com", password: "password1")
 
 ## REVIEWS
+
+puts "Re-creating reviews ..."
+
+Review.destroy_all
+
 review1 = Review.create!(product: cat1.products[0], user: user1, description: "This was pretty good!", rating: 5)
 review2 = Review.create!(product: cat1.products[1], user: user2, description: "Nooooooot so great..", rating: 1)
 review3 = Review.create!(product: cat2.products[0], user: user3, description: "Worked as intended!", rating: 3)

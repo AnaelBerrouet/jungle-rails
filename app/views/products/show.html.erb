@@ -28,4 +28,23 @@
 
   </article>
 
+  <article class="product-detail">
+    <h2>Reviews:</h2>
+    <hr>
+    <% user = current_user %>
+    <% if user != nil %>
+      <%= form_for([@product, @new_review], method: :post) do |f| %>
+        <div class="form-group">
+          <%= f.label :rating %>
+          <%= f.select :rating, [1, 2, 3, 4, 5], class: 'form-control' %>
+          <%= f.label :description %>
+          <%= f.text_area :description, class: 'form-control' %>
+        </div>
+        <%= f.submit 'Create Review', class: 'btn btn-primary' %>
+      <%  end %>
+      <hr>
+      <% end %>
+    <%= render @product.reviews.reverse, user: current_user %>
+  </article>
+
 </section>
