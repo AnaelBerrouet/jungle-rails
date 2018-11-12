@@ -8,7 +8,18 @@ RSpec.describe Product, type: :model do
 
   describe 'Validations' do
 
-    it 'should return true for all parameters set' do
+    it 'should return true for all parameters set correctly and saved' do
+      @product = @category.products.new({
+        name:  'Testing product1',
+        description: Faker::Hipster.paragraph(4),
+        image: 'apparel1.jpg',
+        quantity: 10,
+        price: 64.99
+      })
+      expect(@product.save).to be true
+    end
+
+    it 'should return true for all parameters set correctly' do
       @product = @category.products.new({
         name:  'Testing product',
         description: Faker::Hipster.paragraph(4),
