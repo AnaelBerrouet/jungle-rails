@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "User visits product details", type: :feature, js: true do
+RSpec.feature "User adds product to cart", type: :feature, js: true do
 
   # SETUP
   before :each do
@@ -21,12 +21,13 @@ RSpec.feature "User visits product details", type: :feature, js: true do
     #ACT
     visit root_path
 
-    click_link('Details »', match: :first)
+    # click_button('<i class="fa fa-shopping-cart"></i> Add', match: :first)
+    find('button.btn.btn-primary', match: :first).click
     sleep(1.seconds)
 
     #DEBUG / VERIFY
     save_screenshot
-    expect(page).to have_css('h2', text: 'Reviews:')
+    expect(page).to have_link(href: '/cart', text: 'My Cart (1)')
   end
 
 end
