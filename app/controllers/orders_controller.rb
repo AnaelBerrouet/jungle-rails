@@ -2,9 +2,7 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
-
     @line_items = @order.line_items
-
     @products = @line_items.map { |item|
       Product.where("id = ?", item[:product_id])[0]
     }
@@ -29,7 +27,11 @@ class OrdersController < ApplicationController
     redirect_to cart_path, flash: { error: e.message }
   end
 
+
+
+
   private
+
 
   def empty_cart!
     # empty hash means no products in cart :)
